@@ -1,14 +1,14 @@
 import React from "react";
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
+export const CartContext = createContext();
 const CartContextProvider = (props) => {
   const [cart, setCart] = useState([]);
   const addItem = (item) => {
     setCart([...cart, item]);
   };
-  const removeItem = (item) => {
-    console.log("Removed items:", item);
-    setCart(cart.filter((cartItem) => cartItem.id !== item));
+  const removeItem = (order) => {
+    setCart(cart.toSpliced(order, 1));
   };
   return (
     <CartContext.Provider value={{ cart, addItem, removeItem }}>
@@ -17,5 +17,4 @@ const CartContextProvider = (props) => {
   );
 };
 
-export const CartContext = createContext();
 export default CartContextProvider;
