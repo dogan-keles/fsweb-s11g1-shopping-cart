@@ -1,7 +1,7 @@
 import React from "react";
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { data } from "../data";
-
+export const ProductContext = createContext();
 const ProductContextProvider = (props) => {
   const [products, setProducts] = useState(data);
 
@@ -12,5 +12,4 @@ const ProductContextProvider = (props) => {
   );
 };
 
-export const ProductContext = createContext();
 export default ProductContextProvider;
